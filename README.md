@@ -1,75 +1,50 @@
-# Nuxt Minimal Starter
+#  Бронирование общих ресурсов
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Веб-приложение для бронирования общих ресурсов: конференц-залов, оборудования, транспорта, услуг и т.д.
 
-## Setup
+## 📋 О проекте
 
-Make sure to install dependencies:
+Приложение позволяет пользователям:
+- 🔍 Просматривать доступные ресурсы по категориям
+- 📅 Бронировать ресурсы на определенную дату и время
+- ❤️ Добавлять ресурсы в избранное
+- 📆 Управлять своими бронированиями в календаре
+- ⚙️ Настраивать профиль и уведомления
 
-```bash
-# npm
-npm install
+##  Технологии
 
-# pnpm
-pnpm install
+- **Frontend:** Vue 3 + Nuxt 3
+- **Стили:** SCSS
+- **Типизация:** TypeScript
+- **Хостинг:** GitHub Pages
+- **CI/CD:** GitHub Actions
 
-# yarn
-yarn install
+##  Функционал
 
-# bun
-bun install
-```
+### Главная страница
+- 4 колонки карточек ресурсов на десктопе
+- Адаптивная верстка для мобильных устройств
+- Фильтрация по категориям
+- Поиск ресурсов
 
-## Development Server
+### Календарное бронирование
+- Интерактивный календарь
+- Выбор даты и времени
+- Отображение занятых слотов
+- Подтверждение бронирования
 
-Start the development server on `http://localhost:3000`:
+### Избранное
+- Сохранение понравившихся ресурсов
+- Быстрый доступ к избранным карточкам
 
-```bash
-# npm
-npm run dev -- --host
+### Мой календарь
+- Просмотр всех бронирований
+- Управление событиями
+- Отмена бронирований
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Профиль пользователя
+- Редактирование имени и фамилии
+- Изменение фотографии профиля
+- Смена пароля
+- Настройка уведомлений (Email, Push, SMS)
+- Удаление аккаунта
