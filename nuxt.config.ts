@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   app: {
-    baseURL: '/booking-app/',  
+    baseURL: process.env.NUXT_APP_BASE_URL || '/booking-app/',
     head: {
       title: 'Бронирование ресурсов',
       meta: [
