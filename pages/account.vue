@@ -32,8 +32,8 @@
           <svg viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="calGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#A731E2"/>
-                <stop offset="100%" stop-color="#4A0882"/>
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="100%" stop-color="#ffffff"/>
               </linearGradient>
             </defs>
             <rect x="2" y="6" width="28" height="26" rx="4" fill="url(#calGrad)"/>
