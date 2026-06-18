@@ -71,38 +71,43 @@ const handleLogin = () => {
 <style scoped lang="scss">
 .login-page {
   min-height: 100vh;
-  background: #1A1A1F;
+  background: #231F26;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .content {
   width: 100%;
-  max-width: 600px;
+  max-width: 660px;
 }
 
 .title {
-  font-size: 48px;
+  font-size: 70px;
   font-weight: 900;
-  color: #7C3AED;
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 53px;
+  background: linear-gradient(90deg, #A932E4 0%, #43057B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media (max-width: 767px) {
   .title {
-    font-size: 32px;
-    margin-bottom: 32px;
+    font-size: 35px;
+    margin-bottom: 35px;
   }
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 35px;
 }
 
 .input-wrapper {
@@ -110,7 +115,7 @@ const handleLogin = () => {
   align-items: center;
   background: #2D2D35;
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 18px 22px;
   gap: 12px;
 }
 
@@ -124,9 +129,10 @@ const handleLogin = () => {
   flex: 1;
   background: transparent;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   border: none;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
   
   &::placeholder {
     color: #A0A0A0;
@@ -137,16 +143,17 @@ const handleLogin = () => {
   text-align: right;
   
   a {
-    color: #7C3AED;
+    color: #8307C1;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .divider {
   position: relative;
   text-align: center;
-  margin: 32px 0;
+  margin: 35px 0;
   
   &::before {
     content: '';
@@ -159,26 +166,27 @@ const handleLogin = () => {
   }
   
   span {
-    background: #1A1A1F;
+    background: #231F26;
     padding: 0 16px;
-    color: #7C3AED;
-    font-size: 16px;
+    color: #8307C1;
+    font-size: 18px;
     position: relative;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .social-buttons {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  gap: 18px;
+  margin-bottom: 35px;
 }
 
 .social-btn {
-  width: 64px;
-  height: 64px;
+  width: 70px;
+  height: 70px;
   border-radius: 12px;
-  background: #7C3AED;
+  background: #5C1585;
   border: none;
   display: flex;
   align-items: center;
@@ -187,22 +195,23 @@ const handleLogin = () => {
   cursor: pointer;
   
   &:hover {
-    background: #6D28D9;
+    background: #4A1070;
     transform: scale(1.05);
   }
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
   }
 }
 
 .register-link {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
   
   a {
-    color: #7C3AED;
+    color: #8307C1;
     text-decoration: none;
     
     &:hover {

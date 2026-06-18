@@ -1,11 +1,12 @@
 <template>
   <div class="notifications-page">
+    <!-- Верхний градиентный блок (как в settings) -->
     <div class="profile-header">
-      <NuxtLink to="/settings" class="back-btn">
+      <button class="back-btn" @click="$router.back()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-      </NuxtLink>
+      </button>
       
       <div class="avatar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -15,16 +16,17 @@
         </svg>
       </div>
       
-      <h2 class="user-name">Иван Иванович</h2>
+      <h1 class="user-name">Иван Иванович</h1>
     </div>
     
-    <div class="menu-list">
-      <NuxtLink to="/notifications" class="menu-item">
+    <!-- Меню настроек (как в settings) -->
+    <div class="menu">
+      <div class="menu-item">
         <span>Уведомления</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="9 18 15 12 9 6"></polyline>
         </svg>
-      </NuxtLink>
+      </div>
       
       <NuxtLink to="/profile-edit" class="menu-item">
         <span>Редактировать профиль</span>
@@ -33,45 +35,45 @@
         </svg>
       </NuxtLink>
       
-      <button class="menu-item logout-btn" @click="handleLogout">
+      <button class="menu-item logout-btn">
         <span>Выйти из аккаунта</span>
       </button>
     </div>
     
-    <!-- Модальное окно уведомлений -->
+    <!-- Модальное окно уведомлений поверх -->
     <div class="modal-overlay">
       <div class="modal">
         <div class="modal-header">
-          <NuxtLink to="/settings" class="back-btn-modal">
+          <button class="modal-back-btn" @click="$router.back()">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
-          </NuxtLink>
-          <h3>Уведомления</h3>
+          </button>
+          <h2 class="modal-title">Уведомления</h2>
         </div>
         
         <div class="modal-content">
-          <div class="toggle-item">
+          <div class="notification-item">
             <span>Электронная почта</span>
-            <label class="switch">
-              <input type="checkbox" v-model="emailNotif" />
-              <span class="slider"></span>
+            <label class="toggle">
+              <input type="checkbox" v-model="notifications.email" />
+              <span class="toggle-slider"></span>
             </label>
           </div>
           
-          <div class="toggle-item">
+          <div class="notification-item">
             <span>Пуш-уведомления</span>
-            <label class="switch">
-              <input type="checkbox" v-model="pushNotif" />
-              <span class="slider"></span>
+            <label class="toggle">
+              <input type="checkbox" v-model="notifications.push" />
+              <span class="toggle-slider"></span>
             </label>
           </div>
           
-          <div class="toggle-item">
+          <div class="notification-item">
             <span>СМС</span>
-            <label class="switch">
-              <input type="checkbox" v-model="smsNotif" />
-              <span class="slider"></span>
+            <label class="toggle">
+              <input type="checkbox" v-model="notifications.sms" />
+              <span class="toggle-slider"></span>
             </label>
           </div>
         </div>
@@ -81,176 +83,199 @@
 </template>
 
 <script setup lang="ts">
-const emailNotif = ref(false)
-const pushNotif = ref(true)
-const smsNotif = ref(true)
-
-const handleLogout = () => {
-  navigateTo('/login')
-}
+const notifications = ref({
+  email: false,
+  push: true,
+  sms: true
+})
 </script>
 
 <style scoped lang="scss">
 .notifications-page {
   min-height: 100vh;
-  background: #1A1A1F;
+  background: #231F26;
+  font-family: 'Montserrat', sans-serif;
   position: relative;
 }
 
 .profile-header {
-  background: linear-gradient(180deg, #7C3AED 0%, #2D1B69 100%);
-  padding: 60px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: linear-gradient(180deg, #8307C1 0%, #2C1B4B 100%);
+  padding: 42px 28px 70px;
+  text-align: center;
   position: relative;
+  border-radius: 0 0 42px 42px;
 }
 
 .back-btn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 28px;
+  left: 28px;
   color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
+  background: #19161B;
   border-radius: 50%;
-  background: #25252B;
+  margin: 0 auto 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
   
   svg {
-    width: 50px;
-    height: 50px;
-    color: #A0A0A0;
+    width: 70px;
+    height: 70px;
+    color: white;
   }
 }
 
 .user-name {
-  font-size: 24px;
-  font-weight: 600;
   color: white;
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.menu-list {
-  padding: 24px;
+.menu {
+  padding: 42px 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 600px;
+  gap: 21px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .menu-item {
+  background: #19161B;
+  padding: 21px 35px;
+  border-radius: 21px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #25252B;
-  padding: 20px 24px;
-  border-radius: 16px;
   color: white;
   text-decoration: none;
-  font-size: 20px;
-  transition: background 0.2s;
-  width: 100%;
-  text-align: left;
+  font-size: 35px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   border: none;
   cursor: pointer;
+  width: 100%;
+  text-align: left;
   
   &:hover {
-    background: #2D2D35;
+    background: #231F26;
+    transform: translateY(-2px);
   }
   
   svg {
-    width: 28px;
-    height: 28px;
-    color: #A0A0A0;
+    width: 42px;
+    height: 42px;
+    color: white;
   }
 }
 
 .logout-btn {
-  color: #EF4444;
-  
   span {
-    color: #EF4444;
+    color: #E90000;
+  }
+  
+  &:hover {
+    background: #231F26;
   }
 }
 
-/* Модальное окно */
+/* Модальное окно поверх */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  z-index: 100;
 }
 
 .modal {
-  background: #25252B;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 500px;
+  background: #231F26;
+  border-radius: 28px;
+  width: 90%;
+  max-width: 560px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #3A3A42;
 }
 
 .modal-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 20px 24px;
+  gap: 21px;
+  padding: 28px 35px;
   border-bottom: 1px solid #3A3A42;
-  
-  h3 {
-    font-size: 22px;
-    color: white;
-  }
 }
 
-.back-btn-modal {
+.modal-back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   
   svg {
-    width: 28px;
-    height: 28px;
+    width: 35px;
+    height: 35px;
   }
 }
 
-.modal-content {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.modal-title {
+  color: white;
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.toggle-item {
+.modal-content {
+  padding: 28px 35px;
+}
+
+.notification-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 18px;
-  color: white;
+  padding: 21px 0;
+  border-bottom: 1px solid #3A3A42;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  span {
+    color: white;
+    font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+  }
 }
 
-.switch {
+.toggle {
   position: relative;
   display: inline-block;
-  width: 56px;
-  height: 32px;
+  width: 70px;
+  height: 35px;
   
   input {
     opacity: 0;
@@ -258,36 +283,137 @@ const handleLogout = () => {
     height: 0;
   }
   
-  .slider {
+  .toggle-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #3A3A42;
-    transition: .3s;
-    border-radius: 32px;
+    background-color: #463F4B;
+    transition: 0.3s;
+    border-radius: 35px;
     
     &:before {
       position: absolute;
       content: "";
-      height: 24px;
-      width: 24px;
+      height: 28px;
+      width: 28px;
       left: 4px;
       bottom: 4px;
       background-color: white;
-      transition: .3s;
+      transition: 0.3s;
       border-radius: 50%;
     }
   }
   
-  input:checked + .slider {
-    background-color: #7C3AED;
+  input:checked + .toggle-slider {
+    background-color: #8307C1;
   }
   
-  input:checked + .slider:before {
-    transform: translateX(24px);
+  input:checked + .toggle-slider:before {
+    transform: translateX(35px);
   }
 }
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 28px 14px 42px;
+    border-radius: 0 0 28px 28px;
+  }
+
+  .back-btn {
+    top: 14px;
+    left: 14px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 14px;
+    
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .user-name {
+    font-size: 28px;
+  }
+
+  .menu {
+    padding: 28px 14px;
+    gap: 14px;
+  }
+
+  .menu-item {
+    padding: 14px 21px;
+    border-radius: 14px;
+    font-size: 21px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  /* Модалка на всю ширину */
+  .modal {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    border: none;
+    min-height: 100vh;
+  }
+
+  .modal-header {
+    padding: 21px 14px;
+    gap: 14px;
+  }
+
+  .modal-back-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal-title {
+    font-size: 21px;
+  }
+
+  .modal-content {
+    padding: 21px 14px;
+  }
+
+  .notification-item {
+    padding: 18px 0;
+    
+    span {
+      font-size: 18px;
+    }
+  }
+
+  .toggle {
+    width: 56px;
+    height: 28px;
+    
+    .toggle-slider:before {
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(28px);
+    }
+  }
+}
+
 </style>

@@ -12,7 +12,7 @@
       <div class="booking-layout">
         <div class="calendar-section">
           <div class="month-selector">
-            <h2>МАЙ 2025</h2>
+            <h2 class="month-title">МАЙ 2025</h2>
             <div class="month-nav">
               <button class="nav-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -34,10 +34,10 @@
             <div v-for="day in calendarDays" :key="day.date" 
                  class="day-cell" 
                  :class="{ 
-  'other-month': day.otherMonth,
-  'selected': day.selected,
-  'booked': day.booked
-}">
+                   'other-month': day.otherMonth,
+                   'selected': day.selected,
+                   'booked': day.booked
+                 }">
               {{ day.day }}
             </div>
           </div>
@@ -114,39 +114,40 @@ const timeSlots = [
 <style scoped lang="scss">
 .booking-page {
   min-height: 100vh;
-  background: #1A1A1F;
+  background: #231F26;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header {
-  padding: 16px;
+  padding: 28px;
 }
 
 .back-btn {
-  color: #7C3AED;
+  color: #8307C1;
   background: none;
   border: none;
   cursor: pointer;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 .content {
-  padding: 16px;
+  padding: 28px;
 }
 
 .booking-layout {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 42px;
 }
 
 @media (min-width: 768px) {
   .booking-layout {
     flex-direction: row;
-    gap: 40px;
+    gap: 70px;
   }
   
   .calendar-section {
@@ -162,35 +163,47 @@ const timeSlots = [
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 28px;
+  margin-bottom: 42px;
   
-  h2 {
-    color: #7C3AED;
-    font-size: 24px;
+  .month-title {
+    font-size: 42px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #A731E2 0%, #4A0882 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
   }
 }
 
 .month-nav {
   display: flex;
-  gap: 8px;
+  gap: 14px;
 }
 
 .nav-btn {
-  width: 40px;
-  height: 40px;
-  background: #7C3AED;
-  border-radius: 8px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #A731E2 0%, #4A0882 100%);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   border: none;
   cursor: pointer;
+  transition: all 0.2s;
   
   svg {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
   }
 }
 
@@ -198,90 +211,220 @@ const timeSlots = [
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
   
   span {
     color: white;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 14px;
   text-align: center;
+  justify-items: center;
 }
 
 .day-cell {
-  padding: 12px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   color: white;
-  font-size: 18px;
+  font-size: 28px;
+  font-weight: 500;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   
   &.other-month {
     color: #A0A0A0;
     opacity: 0.5;
+    cursor: default;
   }
   
   &.selected {
-    border: 2px solid #7C3AED;
+    border: 3px solid #8307C1;
+    background: transparent;
+    color: white;
   }
   
   &.booked {
-    background: #7C3AED;
-    color: white;
+  background: #230726;
+  color: #8307C1;
+}
+  
+  &:hover:not(.other-month) {
+    transform: scale(1.1);
   }
 }
 
 .section-title {
-  color: #7C3AED;
-  font-size: 20px;
-  margin-bottom: 16px;
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  background: linear-gradient(90deg, #9D00FF 0%, #9600F2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .time-label {
   color: white;
-  font-size: 18px;
-  margin-bottom: 16px;
+  font-size: 28px;
+  margin-bottom: 28px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .time-slots {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 21px;
 }
 
 .time-slot {
   display: flex;
   align-items: center;
-  gap: 16px;
-  background: #2D2D35;
-  padding: 12px 16px;
-  border-radius: 12px;
+  justify-content: space-between;
+  gap: 28px;
+  background: #36303A;
+  padding: 14px 21px; /* было 21px 28px */
+  border-radius: 14px;
 }
 
 .time {
   flex: 1;
-  font-size: 18px;
+  font-size: 35px; /* было 35px */
   color: white;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .book-btn {
-  background: #7C3AED;
+  background: linear-gradient(135deg, #A731E2 0%, #4A0882 100%);
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 14px 28px; /* было 21px 42px */
+  border-radius: 10px;
+  font-size: 18px; /* было 25px */
+  font-weight: 600;
   border: none;
   cursor: pointer;
-  min-width: 150px;
+  min-width: 180px; /* было 280px */
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
+  
+  &:hover:not(.disabled) {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
   
   &.disabled {
-    background: #2D2D35;
+    background: #1A1A1F;
     color: #EF4444;
+    cursor: default;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 14px;
+  }
+
+  .back-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+  .booking-layout {
+    flex-direction: column !important;
+    gap: 21px;
+  }
+
+  .calendar-section,
+  .booking-section {
+    flex: none;
+    width: 100%;
+  }
+
+  .month-selector {
+    margin-bottom: 21px;
+    gap: 10px;
+  }
+
+  .month-selector h2 {
+    font-size: 22px;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .weekdays {
+    margin-bottom: 14px;
+    
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .days-grid {
+    gap: 6px;
+  }
+
+  .day-cell {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .time-label {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .time-slots {
+    gap: 14px;
+  }
+
+  .time-slot {
+    padding: 14px;
+    border-radius: 14px;
+    gap: 14px;
+  }
+
+  .time {
+    font-size: 16px;
+  }
+
+  .book-btn {
+    padding: 12px 18px;
+    font-size: 14px;
+    min-width: auto;
+    flex: 1;
   }
 }
 </style>

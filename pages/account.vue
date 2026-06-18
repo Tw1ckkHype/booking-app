@@ -1,11 +1,11 @@
 <template>
   <div class="account-page">
     <div class="profile-header">
-      <NuxtLink to="/home" class="back-btn">
+      <button class="back-btn" @click="$router.back()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-      </NuxtLink>
+      </button>
       
       <div class="avatar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -15,10 +15,10 @@
         </svg>
       </div>
       
-      <h2 class="user-name">Иван Иванович</h2>
+      <h1 class="user-name">Иван Иванович</h1>
     </div>
     
-    <div class="menu-list">
+    <div class="menu">
       <NuxtLink to="/favorites" class="menu-item">
         <span>Избранное</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -28,7 +28,20 @@
       
       <NuxtLink to="/my-calendar" class="menu-item">
         <span>Мой календарь</span>
-        <div class="badge">28</div>
+        <div class="calendar-icon">
+          <svg viewBox="0 0 32 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="calGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#A731E2"/>
+                <stop offset="100%" stop-color="#4A0882"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="6" width="28" height="26" rx="4" fill="url(#calGrad)"/>
+            <rect x="6" y="2" width="6" height="8" rx="2" fill="url(#calGrad)"/>
+            <rect x="20" y="2" width="6" height="8" rx="2" fill="url(#calGrad)"/>
+            <text x="16" y="24" text-anchor="middle" fill="#19161B" font-size="14" font-weight="900" font-family="Montserrat, sans-serif">28</text>
+          </svg>
+        </div>
       </NuxtLink>
       
       <NuxtLink to="/settings" class="menu-item">
@@ -42,94 +55,172 @@
   </div>
 </template>
 
+<script setup lang="ts">
+</script>
+
 <style scoped lang="scss">
 .account-page {
   min-height: 100vh;
-  background: #1A1A1F;
+  background: #231F26;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .profile-header {
-  background: linear-gradient(180deg, #7C3AED 0%, #2D1B69 100%);
-  padding: 60px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: linear-gradient(180deg, #8307C1 0%, #2C1B4B 100%);
+  padding: 42px 28px 70px;
+  text-align: center;
   position: relative;
+  border-radius: 0 0 42px 42px;
 }
 
 .back-btn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 28px;
+  left: 28px;
   color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
+  background: #19161B;
   border-radius: 50%;
-  background: #25252B;
+  margin: 0 auto 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
   
   svg {
-    width: 50px;
-    height: 50px;
-    color: #A0A0A0;
+    width: 70px;
+    height: 70px;
+    color: white;
   }
 }
 
 .user-name {
-  font-size: 24px;
-  font-weight: 600;
   color: white;
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.menu-list {
-  padding: 24px;
+.menu {
+  padding: 42px 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 600px;
+  gap: 21px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .menu-item {
+  background: #19161B;
+  padding: 21px 35px;
+  border-radius: 21px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #25252B;
-  padding: 20px 24px;
-  border-radius: 16px;
   color: white;
   text-decoration: none;
-  font-size: 20px;
-  transition: background 0.2s;
+  font-size: 35px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   
   &:hover {
-    background: #2D2D35;
+    background: #231F26;
+    transform: translateY(-2px);
   }
   
   svg {
-    width: 28px;
-    height: 28px;
-    color: #A0A0A0;
+    width: 42px;
+    height: 42px;
+    color: white;
   }
 }
 
-.badge {
-  background: #7C3AED;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
+.calendar-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  svg {
+    width: 42px;
+    height: 46px;
+  }
 }
+
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 150px 14px 42px;
+    border-radius: 0 0 28px 28px;
+  }
+
+  .back-btn {
+    top: 14px;
+    left: 14px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 14px;
+    
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .user-name {
+    font-size: 28px;
+  }
+
+  .menu {
+    padding: 28px 14px;
+    gap: 14px;
+  }
+
+  .menu-item {
+    padding: 14px 21px;
+    border-radius: 14px;
+    font-size: 21px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .calendar-icon {
+    width: 42px;
+    height: 42px;
+    
+    svg {
+      width: 28px;
+      height: 30px;
+    }
+    
+    .calendar-number {
+      font-size: 11px;
+      bottom: 6px;
+    }
+  }
+}
+
 </style>

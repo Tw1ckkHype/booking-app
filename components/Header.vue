@@ -37,16 +37,16 @@
       </div>
       
       <div class="header-actions">
-  <NuxtLink to="/booking" class="notification-badge">
-    28
-  </NuxtLink>
-  <NuxtLink to="/account" class="profile-icon">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-      <circle cx="12" cy="7" r="4"></circle>
-    </svg>
-  </NuxtLink>
-</div>
+        <NuxtLink to="/booking" class="notification-badge">
+          28
+        </NuxtLink>
+        <NuxtLink to="/account" class="profile-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </NuxtLink>
+      </div>
     </div>
     
     <!-- Список категорий (появляется при клике) -->
@@ -84,40 +84,45 @@ const toggleCategories = () => {
 
 <style scoped lang="scss">
 .header {
-  background: #25252B;
-  padding: 16px;
+  background: #231F26;
+  padding: 28px;
   border-bottom: 1px solid #3A3A42;
   position: sticky;
   top: 0;
   z-index: 100;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header-top {
   display: flex;
-  gap: 8px;
+  gap: 14px;
   align-items: center;
 }
 
 .menu-btn {
-  background: #7C3AED;
+  background: linear-gradient(135deg, #A731E2 0%, #490782 100%);
   color: white;
-  padding: 12px 16px;
-  border-radius: 12px;
+  padding: 21px 28px;
+  border-radius: 21px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  gap: 14px;
+  font-size: 25px;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   white-space: nowrap;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   
   svg {
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
   }
   
   &:hover {
     opacity: 0.9;
+    transform: scale(1.02);
   }
 }
 
@@ -125,15 +130,15 @@ const toggleCategories = () => {
   flex: 1;
   display: flex;
   align-items: center;
-  background: #2D2D35;
-  border-radius: 12px;
-  padding: 12px 16px;
-  gap: 12px;
+  background: #36303A;
+  border-radius: 21px;
+  padding: 21px 28px;
+  gap: 21px;
 }
 
 .search-icon {
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   color: #A0A0A0;
 }
 
@@ -141,9 +146,10 @@ const toggleCategories = () => {
   flex: 1;
   background: transparent;
   color: white;
-  font-size: 14px;
+  font-size: 25px;
   border: none;
   outline: none;
+  font-family: 'Montserrat', sans-serif;
   
   &::placeholder {
     color: #A0A0A0;
@@ -155,61 +161,81 @@ const toggleCategories = () => {
   background: none;
   border: none;
   cursor: pointer;
+  transition: color 0.2s;
+  
+  &:hover {
+    color: white;
+  }
   
   svg {
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
   }
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
 }
 
 .notification-badge {
-  background: #7C3AED;
+  background: linear-gradient(135deg, #A731E2 0%, #490782 100%);
   color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  border-radius: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 28px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
+  
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
 }
 
 .profile-icon {
-  width: 40px;
-  height: 40px;
-  background: #7C3AED;
-  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #A731E2 0%, #490782 100%);
+  border-radius: 21px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  text-decoration: none;
+  transition: all 0.2s;
+  
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
   
   svg {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
   }
 }
 
 /* Стили для панели категорий */
 .categories-panel {
-  margin-top: 16px;
-  background: #1A1A1F;
-  border-radius: 16px;
-  padding: 16px;
+  margin-top: 28px;
+  background: #231F26;
+  border-radius: 28px;
+  padding: 28px;
   border: 1px solid #3A3A42;
 }
 
 .categories-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 21px;
 }
 
 @media (min-width: 768px) {
@@ -219,23 +245,97 @@ const toggleCategories = () => {
 }
 
 .category-item {
-  background: #25252B;
-  padding: 16px;
-  border-radius: 12px;
+  background: #19161B;
+  padding: 28px;
+  border-radius: 21px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
   cursor: pointer;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   
   svg {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     color: #A0A0A0;
   }
   
   &:hover {
-    background: #2D2D35;
+    background: #4A4250;
+    transform: translateY(-2px);
+  }
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .header {
+    padding: 14px;
+  }
+
+  .header-top {
+    gap: 10px;
+  }
+
+  // Скрываем кнопку "Все категории" на мобильных
+  .menu-btn {
+    display: none;
+  }
+
+  // Скрываем иконку профиля на мобильных (она есть в BottomNav)
+  .profile-icon {
+    display: none;
+  }
+
+  .search-bar {
+    padding: 12px 16px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .search-input {
+    font-size: 16px;
+  }
+
+  .filter-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .notification-badge {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 18px;
+  }
+
+  .categories-panel {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .categories-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .category-item {
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 </style>

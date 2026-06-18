@@ -1,11 +1,12 @@
 <template>
   <div class="settings-page">
+    <!-- Верхний градиентный блок -->
     <div class="profile-header">
-      <NuxtLink to="/account" class="back-btn">
+      <button class="back-btn" @click="$router.back()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-      </NuxtLink>
+      </button>
       
       <div class="avatar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -15,10 +16,11 @@
         </svg>
       </div>
       
-      <h2 class="user-name">Иван Иванович</h2>
+      <h1 class="user-name">Иван Иванович</h1>
     </div>
     
-    <div class="menu-list">
+    <!-- Меню настроек -->
+    <div class="menu">
       <NuxtLink to="/notifications" class="menu-item">
         <span>Уведомления</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -33,7 +35,7 @@
         </svg>
       </NuxtLink>
       
-      <button class="menu-item logout-btn" @click="handleLogout">
+      <button class="menu-item logout-btn">
         <span>Выйти из аккаунта</span>
       </button>
     </div>
@@ -41,102 +43,157 @@
 </template>
 
 <script setup lang="ts">
-const handleLogout = () => {
-  navigateTo('/login')
-}
 </script>
 
 <style scoped lang="scss">
 .settings-page {
   min-height: 100vh;
-  background: #1A1A1F;
+  background: #231F26;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .profile-header {
-  background: linear-gradient(180deg, #7C3AED 0%, #2D1B69 100%);
-  padding: 60px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: linear-gradient(180deg, #8307C1 0%, #2C1B4B 100%);
+  padding: 42px 28px 70px;
+  text-align: center;
   position: relative;
+  border-radius: 0 0 42px 42px;
 }
 
 .back-btn {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 28px;
+  left: 28px;
   color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
+  background: #19161B;
   border-radius: 50%;
-  background: #25252B;
+  margin: 0 auto 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
   
   svg {
-    width: 50px;
-    height: 50px;
-    color: #A0A0A0;
+    width: 70px;
+    height: 70px;
+    color: white;
   }
 }
 
 .user-name {
-  font-size: 24px;
-  font-weight: 600;
   color: white;
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.menu-list {
-  padding: 24px;
+.menu {
+  padding: 42px 28px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 600px;
+  gap: 21px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .menu-item {
+  background: #19161B;
+  padding: 21px 35px;
+  border-radius: 21px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #25252B;
-  padding: 20px 24px;
-  border-radius: 16px;
   color: white;
   text-decoration: none;
-  font-size: 20px;
-  transition: background 0.2s;
-  width: 100%;
-  text-align: left;
+  font-size: 35px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   border: none;
   cursor: pointer;
+  width: 100%;
+  text-align: left;
   
   &:hover {
-    background: #2D2D35;
+    background: #231F26;
+    transform: translateY(-2px);
   }
   
   svg {
-    width: 28px;
-    height: 28px;
-    color: #A0A0A0;
+    width: 42px;
+    height: 42px;
+    color: white;
   }
 }
 
 .logout-btn {
-  color: #EF4444;
-  
   span {
-    color: #EF4444;
+    color: #E90000;
+  }
+  
+  &:hover {
+    background: #231F26;
   }
 }
+
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 150px 14px 42px;
+    border-radius: 0 0 28px 28px;
+  }
+
+  .back-btn {
+    top: 14px;
+    left: 14px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 14px;
+    
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .user-name {
+    font-size: 28px;
+  }
+
+  .menu {
+    padding: 28px 14px;
+    gap: 14px;
+  }
+
+  .menu-item {
+    padding: 14px 21px;
+    border-radius: 14px;
+    font-size: 21px;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
 </style>

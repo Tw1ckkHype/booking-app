@@ -4,12 +4,12 @@
     
     <div class="content">
       <div class="categories-list">
-        <NuxtLink v-for="cat in categories" :key="cat.id" :to="`/booking?category=${cat.id}`" class="category-item">
-          <span>{{ cat.name }}</span>
+        <div class="category-item" v-for="cat in categories" :key="cat">
+          <span>{{ cat }}</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="9 18 15 12 9 6"></polyline>
           </svg>
-        </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
@@ -17,63 +17,80 @@
 
 <script setup lang="ts">
 const categories = [
-  { id: 1, name: 'Услуги красоты' },
-  { id: 2, name: 'Фотографы' },
-  { id: 3, name: 'Конференц-залы' },
-  { id: 4, name: 'Оборудование' },
-  { id: 5, name: 'Транспорт' },
-  { id: 6, name: 'Персонал' },
-  { id: 7, name: 'Специальные ресурсы' },
-  { id: 8, name: 'Отели и проживание' }
+  'Услуги красоты',
+  'Фотографы',
+  'Конференц-залы',
+  'Оборудование',
+  'Транспорт',
+  'Персонал',
+  'Специальные ресурсы',
+  'Отели и проживание'
 ]
 </script>
 
 <style scoped lang="scss">
-@import '@/assets/scss/variables.scss';
-
 .search-page {
   min-height: 100vh;
-  background: $background;
+  background: #231F26;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .content {
-  padding: $spacing-md;
+  padding: 28px;
 }
 
 .categories-list {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: 14px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .category-item {
+  background: #19161B;
+  padding: 21px 28px;
+  border-radius: 21px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: $surface;
-  padding: $spacing-md;
-  border-radius: $radius-md;
-  color: $text-primary;
-  text-decoration: none;
-  transition: background 0.2s;
-  
-  &:hover {
-    background: $surface-light;
-  }
+  color: white;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   
   svg {
-    width: 20px;
-    height: 20px;
-    color: $text-secondary;
+    width: 35px;
+    height: 35px;
+    color: white;
+  }
+  
+  &:hover {
+    background: #231F26;
+    transform: translateY(-2px);
   }
 }
 
-@media (min-width: 768px) {
-  .search-page {
-    max-width: 414px;
-    margin: 0 auto;
-    border-left: 1px solid #3A3A42;
-    border-right: 1px solid #3A3A42;
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .content {
+    padding: 14px;
+  }
+
+  .categories-list {
+    gap: 10px;
+  }
+
+  .category-item {
+    padding: 18px 21px;
+    border-radius: 14px;
+    font-size: 18px;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 </style>

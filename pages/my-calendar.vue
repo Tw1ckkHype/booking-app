@@ -111,39 +111,40 @@ const events = [
 <style scoped lang="scss">
 .calendar-page {
   min-height: 100vh;
-  background: #1A1A1F;
+  background: #231F26;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .header {
-  padding: 16px;
+  padding: 28px;
 }
 
 .back-btn {
-  color: #7C3AED;
+  color: #8307C1;
   background: none;
   border: none;
   cursor: pointer;
   
   svg {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 }
 
 .content {
-  padding: 16px;
+  padding: 28px;
 }
 
 .calendar-layout {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 42px;
 }
 
 @media (min-width: 768px) {
   .calendar-layout {
     flex-direction: row;
-    gap: 40px;
+    gap: 70px;
   }
   
   .calendar-section {
@@ -159,35 +160,47 @@ const events = [
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 28px;
+  margin-bottom: 42px;
   
   h2 {
-    color: #7C3AED;
-    font-size: 24px;
+    font-size: 42px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #A731E2 0%, #4A0882 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .month-nav {
   display: flex;
-  gap: 8px;
+  gap: 14px;
 }
 
 .nav-btn {
-  width: 40px;
-  height: 40px;
-  background: #7C3AED;
-  border-radius: 8px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #A731E2 0%, #4A0882 100%);
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   border: none;
   cursor: pointer;
+  transition: all 0.2s;
   
   svg {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
   }
 }
 
@@ -195,89 +208,230 @@ const events = [
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
   
   span {
     color: white;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 14px;
   text-align: center;
+  justify-items: center;
 }
 
 .day-cell {
-  padding: 12px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   color: white;
-  font-size: 18px;
+  font-size: 28px;
+  font-weight: 500;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
   
   &.other-month {
     color: #A0A0A0;
     opacity: 0.5;
+    cursor: default;
   }
   
   &.selected {
-    border: 2px solid #7C3AED;
+    border: 3px solid #8307C1;
+    background: transparent;
+    color: white;
   }
   
   &.booked {
-    background: #7C3AED;
+    background: #8307C1;
     color: white;
+  }
+  
+  &:hover:not(.other-month) {
+    transform: scale(1.1);
   }
 }
 
 .section-title {
-  color: #7C3AED;
-  font-size: 20px;
-  margin-bottom: 16px;
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  background: linear-gradient(90deg, #9D00FF 0%, #9600F2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .event-item {
-  margin-bottom: 24px;
+  margin-bottom: 35px;
 }
 
 .event-date {
   color: white;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: 600;
+  margin-bottom: 7px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .event-name {
-  color: #7C3AED;
-  font-size: 18px;
-  margin-bottom: 12px;
+  font-size: 28px;
+  margin-bottom: 14px;
+  background: linear-gradient(90deg, #9D00FF 0%, #9600F2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .event-time {
   display: flex;
   align-items: center;
-  gap: 16px;
-  background: #2D2D35;
-  padding: 12px 16px;
-  border-radius: 12px;
+  gap: 21px;
+  background: #36303A;
+  padding: 21px 28px;
+  border-radius: 21px;
   
   span {
     flex: 1;
     color: white;
-    font-size: 18px;
+    font-size: 28px;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 .cancel-btn {
   color: #EF4444;
-  background: #25252B;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: #1A1A1F;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 21px;
+  font-weight: 600;
   border: none;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
+  
+  &:hover {
+    opacity: 0.8;
+  }
 }
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .calendar-page {
+    padding-bottom: 80px;
+  }
+
+  .header {
+    padding: 14px;
+  }
+
+  .back-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+  .calendar-layout {
+    flex-direction: column !important;
+    gap: 21px;
+  }
+
+  .calendar-section,
+  .events-section {
+    flex: none;
+    width: 100%;
+  }
+
+  .month-selector {
+    margin-bottom: 21px;
+    gap: 10px;
+  }
+
+  .month-selector h2 {
+    font-size: 22px;
+  }
+
+  .nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .weekdays {
+    margin-bottom: 14px;
+    
+    span {
+      font-size: 12px;
+    }
+  }
+
+  .days-grid {
+    gap: 6px;
+  }
+
+  .day-cell {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .event-item {
+    margin-bottom: 21px;
+  }
+
+  .event-date {
+    font-size: 16px;
+    margin-bottom: 7px;
+  }
+
+  .event-name {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .event-time {
+    padding: 14px;
+    border-radius: 14px;
+    gap: 14px;
+  }
+
+  .event-time span {
+    font-size: 16px;
+  }
+
+  .cancel-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
 </style>

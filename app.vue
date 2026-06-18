@@ -1,5 +1,7 @@
 <template>
-  <NuxtPage />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style lang="scss">
@@ -13,7 +15,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #1A1A1F;
+  background-color: #231F26; /* изменил с #1A1A1F */
   color: #FFFFFF;
   line-height: 1.5;
 }

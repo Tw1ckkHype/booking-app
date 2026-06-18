@@ -11,8 +11,9 @@
 const route = useRoute()
 
 const showBottomNav = computed(() => {
-  const hideOnPages = ['index', 'login']
-  return !hideOnPages.includes(route.name as string)
+  // Проверяем по path вместо name
+  const hideOnPages = ['/', '/login']
+  return !hideOnPages.includes(route.path)
 })
 </script>
 
@@ -21,19 +22,18 @@ const showBottomNav = computed(() => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #1A1A1F;
+  background: #231F26; // было #1A1A1F
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-  padding-bottom: 80px;
+  padding-bottom: 80px; // место для BottomNav на мобильных
 }
 
 @media (min-width: 768px) {
   .main-content {
-    padding-bottom: 0;
-    padding: 40px 80px;
+    padding-bottom: 0; // на десктопе BottomNav скрыт
   }
 }
 </style>
