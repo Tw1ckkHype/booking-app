@@ -43,6 +43,7 @@ const isActive = (path: string) => {
   justify-content: space-around;
   padding: 18px 0;
   z-index: 100;
+  height: 70px; // фиксированная высота
   
   @media (max-width: 768px) {
     display: flex;

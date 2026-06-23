@@ -62,7 +62,6 @@ const resources = [
   display: flex;
   gap: 28px;
   margin-bottom: 42px;
-  border-bottom: 1px solid #3A3A42;
 }
 
 .tab {
@@ -70,14 +69,12 @@ const resources = [
   color: #A0A0A0;
   font-size: 28px;
   padding: 14px 0;
-  border-bottom: 2px solid transparent;
   transition: all 0.2s;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
   
   &.active {
     color: #FFFFFF;
-    border-bottom-color: #7C3AED;
   }
   
   &:hover {
@@ -183,58 +180,88 @@ const resources = [
 
 /* Мобильная адаптация */
 @media (max-width: 768px) {
+  .home-page {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
   .content {
     padding: 14px;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
   }
 
   .tabs {
     gap: 21px;
     margin-bottom: 28px;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   .tab {
-    font-size: 21px;
+    font-size: 18px; // уменьшил с 21px
     padding: 10px 0;
+    white-space: nowrap;
   }
 
   .resources-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 10px; // уменьшил с 14px
+    width: 100%;
+    max-width: 100%;
   }
 
   .resource-item {
     width: 100%;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .card-image {
-    height: 180px;
+    height: 160px; // уменьшил с 180px
     border-radius: 14px;
+    width: 100%;
   }
 
   .card-info {
-    gap: 10px;
-    margin-top: 10px;
+    gap: 8px;
+    margin-top: 8px;
+    width: 100%;
   }
 
   .info-text {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    
     h3 {
-      font-size: 14px;
+      font-size: 13px; // уменьшил
       margin-bottom: 4px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.2;
     }
     
     p {
-      font-size: 12px;
+      font-size: 11px; // уменьшил
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.2;
     }
   }
 
   .info-actions {
     gap: 4px;
+    flex-shrink: 0;
   }
 
   .favorite-btn svg,
   .more-btn svg {
-    width: 21px;
-    height: 21px;
+    width: 18px; // уменьшил
+    height: 18px;
   }
 }
 </style>

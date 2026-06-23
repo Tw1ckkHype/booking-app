@@ -11,7 +11,6 @@
 const route = useRoute()
 
 const showBottomNav = computed(() => {
-  // Проверяем по path вместо name
   const hideOnPages = ['/', '/login']
   return !hideOnPages.includes(route.path)
 })
@@ -22,18 +21,17 @@ const showBottomNav = computed(() => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #231F26; // было #1A1A1F
+  background: #231F26;
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-  padding-bottom: 80px; // место для BottomNav на мобильных
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .main-content {
-    padding-bottom: 0; // на десктопе BottomNav скрыт
+    padding-bottom: 70px; // только на мобильных
   }
 }
 </style>

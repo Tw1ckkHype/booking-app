@@ -113,7 +113,7 @@ const handleLogin = () => {
 .input-wrapper {
   display: flex;
   align-items: center;
-  background: #2D2D35;
+  background: #36303A;
   border-radius: 12px;
   padding: 18px 22px;
   gap: 12px;

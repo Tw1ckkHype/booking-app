@@ -167,7 +167,7 @@ const timeSlots = [
   margin-bottom: 42px;
   
   .month-title {
-    font-size: 42px;
+    font-size: 36px;
     font-weight: 900;
     background: linear-gradient(90deg, #A731E2 0%, #4A0882 100%);
     -webkit-background-clip: text;
@@ -175,6 +175,7 @@ const timeSlots = [
     background-clip: text;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
+    text-align: center;
   }
 }
 
@@ -256,9 +257,9 @@ const timeSlots = [
   }
   
   &.booked {
-  background: #230726;
-  color: #8307C1;
-}
+    background: #230726;
+    color: #8307C1;
+  }
   
   &:hover:not(.other-month) {
     transform: scale(1.1);
@@ -266,7 +267,7 @@ const timeSlots = [
 }
 
 .section-title {
-  font-size: 35px;
+  font-size: 32px;
   font-weight: 700;
   margin-bottom: 28px;
   background: linear-gradient(90deg, #9D00FF 0%, #9600F2 100%);
@@ -274,13 +275,18 @@ const timeSlots = [
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  border-top: 1px solid #3A3A42;
+  border-bottom: 1px solid #3A3A42;
+  padding: 14px 0;
 }
 
 .time-label {
   color: white;
-  font-size: 28px;
+  font-size: 24px;
   margin-bottom: 28px;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
 .time-slots {
@@ -292,16 +298,16 @@ const timeSlots = [
 .time-slot {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 28px;
+  gap: 20px;
   background: #36303A;
-  padding: 14px 21px; /* было 21px 28px */
+  padding: 14px 21px;
   border-radius: 14px;
+  border: none;
 }
 
 .time {
   flex: 1;
-  font-size: 35px; /* было 35px */
+  font-size: 28px;
   color: white;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -310,15 +316,16 @@ const timeSlots = [
 .book-btn {
   background: linear-gradient(135deg, #A731E2 0%, #4A0882 100%);
   color: white;
-  padding: 14px 28px; /* было 21px 42px */
+  padding: 14px 28px;
   border-radius: 10px;
-  font-size: 18px; /* было 25px */
+  font-size: 16px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  min-width: 180px; /* было 280px */
+  min-width: 180px;
   font-family: 'Montserrat', sans-serif;
   transition: all 0.2s;
+  margin-left: auto;
   
   &:hover:not(.disabled) {
     opacity: 0.9;
@@ -332,6 +339,7 @@ const timeSlots = [
   }
 }
 
+/* Мобильная адаптация */
 @media (max-width: 768px) {
   .header {
     padding: 14px;
@@ -343,88 +351,109 @@ const timeSlots = [
   }
 
   .content {
-    padding: 14px;
+    padding: 14px 14px 0 14px; /* убрали padding снизу */
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   .booking-layout {
     flex-direction: column !important;
-    gap: 21px;
+    gap: 14px;
+    width: 100%;
   }
 
   .calendar-section,
   .booking-section {
     flex: none;
     width: 100%;
+    max-width: 100%;
   }
 
   .month-selector {
-    margin-bottom: 21px;
+    margin-bottom: 14px;
     gap: 10px;
   }
 
   .month-selector h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .nav-btn {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 8px;
     
     svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
   }
 
   .weekdays {
-    margin-bottom: 14px;
+    margin-bottom: 8px;
     
     span {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
 
   .days-grid {
-    gap: 6px;
+    gap: 3px;
+    width: 100%;
   }
 
   .day-cell {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
-    padding: 6px;
+    width: 30px;
+    height: 30px;
+    font-size: 11px;
+    padding: 3px;
   }
 
   .section-title {
-    font-size: 18px;
-    margin-bottom: 14px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-top: 1px solid #3A3A42;
+    border-bottom: 1px solid #3A3A42;
+    padding: 10px 0;
   }
 
   .time-label {
-    font-size: 16px;
-    margin-bottom: 14px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-align: center;
   }
 
   .time-slots {
-    gap: 14px;
+    gap: 6px;
+    padding-bottom: 0; /* убрали отступ снизу */
+    margin-bottom: 0; /* убрали отступ снизу */
   }
 
   .time-slot {
-    padding: 14px;
-    border-radius: 14px;
-    gap: 14px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    gap: 8px;
+    border: none;
+    
+    &:last-child {
+      margin-bottom: 0; /* последний слот без отступа */
+    }
   }
 
   .time {
-    font-size: 16px;
+    font-size: 13px;
+    text-align: center;
   }
 
   .book-btn {
-    padding: 12px 18px;
-    font-size: 14px;
+    padding: 8px 12px;
+    font-size: 11px;
     min-width: auto;
-    flex: 1;
+    margin-left: 0;
+    white-space: nowrap;
+    border-radius: 8px;
   }
 }
 </style>
