@@ -19,19 +19,20 @@ const showBottomNav = computed(() => {
 <style scoped lang="scss">
 .app-layout {
   min-height: 100vh;
+  min-height: 100dvh; // dynamic viewport height для мобильных
   display: flex;
   flex-direction: column;
   background: #231F26;
+  // убрали position: relative
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-}
-
-@media (max-width: 768px) {
-  .main-content {
-    padding-bottom: 70px; // только на мобильных
+  padding-bottom: 70px;
+  
+  @media (min-width: 769px) {
+    padding-bottom: 0;
   }
 }
 </style>

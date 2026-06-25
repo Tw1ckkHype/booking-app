@@ -27,10 +27,9 @@ body {
   line-height: 1.5;
 }
 
-// Скрыть горизонтальную прокрутку везде
 ::-webkit-scrollbar {
   width: 8px;
-  height: 0; // скрыть горизонтальный скроллбар
+  height: 0;
 }
 
 ::-webkit-scrollbar-track {
